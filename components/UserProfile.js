@@ -1,29 +1,40 @@
 import React from 'react';
+import { Avatar } from 'react-avatar';
+import { CurrencyDollarIcon, MailIcon, UserIcon, ChatAltIcon } from '@heroicons/react/outline';
 
 const UserProfile = () => {
+  const userData = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    tokenBalance: 10000,
+  };
+
   return (
-    <aside className="bg-white w-1/4 p-6 rounded-lg shadow-md">
-      {/* User Profile */}
-      <div className="mb-6">
-        <h2 className="text-xl font-bold mb-2">Your Name</h2>
-        <p>Experience: 500 XP</p>
-        <p>Skills: JavaScript, React, Next.js</p>
+    <aside className="bg-white w-1/4 p-6 rounded-lg shadow-md mr-8">
+      <div className="flex items-center mb-4">
+        <Avatar email={userData.email} name={userData.name} round={true} size={64} />
+        <div className="ml-4">
+          <h2 className="text-xl font-bold">{userData.name}</h2>
+          <p className="text-gray-600">{userData.email}</p>
+        </div>
       </div>
-
-      {/* Token Wallet */}
-      <div className="mb-6">
-        <h2 className="text-xl font-bold mb-2">Token Wallet</h2>
-        <p>Balance: 10,000 tokens</p>
+      <div className="mb-4">
+        <CurrencyDollarIcon className="w-6 h-6 inline-block text-blue-500 mr-2" />
+        <span>{userData.tokenBalance} Tokens</span>
       </div>
-
-      {/* Social Media & DMs */}
-      <div>
-        <h2 className="text-xl font-bold mb-2">Connect</h2>
-        <ul>
-          <li>Twitter</li>
-          <li>LinkedIn</li>
-          <li>Direct Messages</li>
-        </ul>
+      <div className="space-y-2">
+        <button className="flex items-center text-blue-500">
+          <UserIcon className="w-6 h-6 mr-2" />
+          Profile
+        </button>
+        <button className="flex items-center text-blue-500">
+          <MailIcon className="w-6 h-6 mr-2" />
+          DMs
+        </button>
+        <button className="flex items-center text-blue-500">
+          <ChatAltIcon className="w-6 h-6 mr-2" />
+          Social Media
+        </button>
       </div>
     </aside>
   );

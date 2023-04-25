@@ -11,6 +11,7 @@
     "dependencies": {
       "next": "latest",
       "react": "latest",
+      "react-avatar": "latest",
       "react-dom": "latest",
       "tailwindcss": "latest",
       "autoprefixer": "latest",
