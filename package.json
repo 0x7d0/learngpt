@@ -10,7 +10,7 @@
     },
     "dependencies": {
       "next": "latest",
-      "core-js": "latest",
+      "core-js": "^3.0.0",
       "react": "latest",
       "react-avatar": "latest",
       "@heroicons/react": "latest",
