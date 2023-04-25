@@ -13,12 +13,16 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
   const loader = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       const newCourses = await fetchCourses(page);
+      if (newCourses.length === 0) {
+        setHasMore(false);
+      }
       setCourses((prevCourses) => [...prevCourses, ...newCourses]);
       setLoading(false);
     };
@@ -32,12 +36,14 @@ const Courses = () => {
     if (loader.current) {
       observer.observe(loader.current);
     }
+
+    return () => observer.disconnect();
   }, []);
 
   const handleObserver = (entities) => {
     const target = entities[0];
 
-    if (target.isIntersecting) {
+    if (target.isIntersecting && hasMore) {
       setPage((prevPage) => prevPage + 1);
     }
   };
@@ -48,6 +54,7 @@ const Courses = () => {
         <CourseCard key={index} {...course} />
       ))}
       {loading && <p>Loading...</p>}
+      {!hasMore && <p>No more courses to show</p>}
       <div ref={loader}></div>
     </main>
   );
