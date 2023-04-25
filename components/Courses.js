@@ -1,6 +1,7 @@
-// components/Courses.js
 import React, { useState, useEffect, useRef } from 'react';
 import fetchCourses from '../utils/fetchCourses';
+import CourseCard from './CourseCard';
+
 
 const CourseCard = ({ title, url }) => (
   <div className="bg-white p-6 rounded-lg shadow-md mb-6">
