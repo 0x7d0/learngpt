@@ -7,9 +7,9 @@ import ChatGPT from '../components/ChatGPT';
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <div className="flex-grow flex">
+      <div className="flex-grow flex justify-center py-12">
         <UserProfile />
         <Courses />
         <ChatGPT />

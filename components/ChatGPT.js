@@ -27,8 +27,8 @@ const ChatGPT = () => {
   };
 
   return (
-    <aside className="bg-gray-200 w-1/4 p-4">
-      <div className="h-80 overflow-y-scroll mb-4">
+    <aside className="bg-white w-1/4 p-6 rounded-lg shadow-md">
+      <div className="h-80 overflow-y-scroll mb-6">
         {messages.map((message, index) => (
           <div key={index} className={`text-gray-800 ${message.type === 'gpt' ? 'text-green-500' : ''}`}>
             {message.content}
@@ -38,7 +38,7 @@ const ChatGPT = () => {
       <form onSubmit={handleInputMessageSubmit}>
         <input
           type="text"
-          className="w-full p-2 border-2 border-gray-400 rounded"
+          className="w-full p-2 border-2 border-gray-300 rounded"
           placeholder="Ask your digital tutor"
           value={inputMessage}
           onChange={handleInputMessageChange}
