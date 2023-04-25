@@ -15,7 +15,8 @@
       "tailwindcss": "latest",
       "autoprefixer": "latest",
       "postcss": "latest",
-      "react-avataaars": "latest"
+      "react-avataaars": "latest",
+      "react-icons": "latest"
     },
     "devDependencies": {
       "eslint": "latest",
