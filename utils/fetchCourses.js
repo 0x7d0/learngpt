@@ -2,9 +2,9 @@
 const fetchCourses = async (page) => {
     const courses = [
       // Add your YouTube course URLs here
-      'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      'https://www.youtube.com/watch?v=J01rYl9T3BU',
-      'https://www.youtube.com/watch?v=zH7KZD5vGBY',
+      'https://www.youtube.com/watch?v=Z-VfaG9ZN_U',
+      'https://www.youtube.com/watch?v=ODg6EPfekf0',
+      'https://www.youtube.com/watch?v=CEgcIWKJtkQ',
       // ...
     ];
   
