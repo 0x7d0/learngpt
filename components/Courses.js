@@ -1,25 +1,55 @@
-import React from 'react';
+// components/Courses.js
+import React, { useState, useEffect, useRef } from 'react';
+import fetchCourses from '../utils/fetchCourses';
 
-const CourseCard = ({ title, likes, reshares }) => (
+const CourseCard = ({ title, url }) => (
   <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-    <h3 className="text-xl font-bold mb-2">{title}</h3>
-    <p className="text-gray-600">{likes} likes</p>
-    <p className="text-gray-600">{reshares} reshares</p>
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+    </a>
   </div>
 );
 
 const Courses = () => {
-  const sampleCourses = [
-    { title: 'React for Beginners', likes: 120, reshares: 20 },
-    { title: 'Advanced Next.js', likes: 75, reshares: 12 },
-    // Add more sample courses here
-  ];
+  const [courses, setCourses] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const loader = useRef(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const newCourses = await fetchCourses(page);
+      setCourses((prevCourses) => [...prevCourses, ...newCourses]);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, { root: null, rootMargin: '20px', threshold: 1.0 });
+
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+  }, []);
+
+  const handleObserver = (entities) => {
+    const target = entities[0];
+
+    if (target.isIntersecting) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
     <main className="w-1/2 px-8">
-      {sampleCourses.map((course, index) => (
+      {courses.map((course, index) => (
         <CourseCard key={index} {...course} />
       ))}
+      {loading && <p>Loading...</p>}
+      <div ref={loader}></div>
     </main>
   );
 };
