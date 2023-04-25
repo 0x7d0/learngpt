@@ -12,6 +12,7 @@
       "next": "latest",
       "react": "latest",
       "react-avatar": "latest",
+      "@heroicons/react": "latest",
       "react-dom": "latest",
       "tailwindcss": "latest",
       "autoprefixer": "latest",
