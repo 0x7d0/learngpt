@@ -1,43 +1,60 @@
-import React from 'react';
-import { Avatar } from 'react-avatar';
-import { CurrencyDollarIcon, MailIcon, UserIcon, ChatAltIcon } from '@heroicons/react/outline';
+import Avataaars from 'react-avataaars';
+import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { HiOutlineCurrencyDollar } from 'react-icons/hi';
 
-const UserProfile = () => {
-  const userData = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    tokenBalance: 10000,
-  };
-
+export default function UserProfile({ userProfile }) {
   return (
-    <aside className="bg-white w-1/4 p-6 rounded-lg shadow-md mr-8">
-      <div className="flex items-center mb-4">
-        <Avatar email={userData.email} name={userData.name} round={true} size={64} />
-        <div className="ml-4">
-          <h2 className="text-xl font-bold">{userData.name}</h2>
-          <p className="text-gray-600">{userData.email}</p>
+    <div className="flex items-center space-x-3 mt-8">
+      <div className="flex-shrink-0">
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <Avataaars
+              style={{ width: '72px', height: '72px' }}
+              avatarStyle="Circle"
+              topType="ShortHairShortWaved"
+              accessoriesType="Prescription01"
+              hairColor="BrownDark"
+              facialHairType="BeardMedium"
+              facialHairColor="BrownDark"
+              clotheType="Hoodie"
+              clotheColor="Heather"
+              eyeType="Squint"
+              eyebrowType="UpDownNatural"
+              mouthType="Twinkle"
+              skinColor="Light"
+            />
+          </div>
         </div>
       </div>
-      <div className="mb-4">
-        <CurrencyDollarIcon className="w-6 h-6 inline-block text-blue-500 mr-2" />
-        <span>{userData.tokenBalance} Tokens</span>
+      <div className="min-w-0 flex-1">
+        <h2 className="text-lg font-medium text-gray-900">
+          {userProfile.firstName} {userProfile.lastName}
+        </h2>
+        <dl className="flex flex-col mt-1 text-sm text-gray-600">
+          <div className="flex flex-col">
+            <dt className="font-medium">Tokens</dt>
+            <dd className="mt-1">
+              <HiOutlineCurrencyDollar className="inline-block mr-1 w-4 h-4" />
+              {20000}
+            </dd>
+          </div>
+          <div className="flex flex-col">
+            <dt className="font-medium">Experience</dt>
+            <dd className="mt-1">{userProfile.experience}</dd>
+          </div>
+          <div className="flex flex-row items-center mt-1">
+            <FaFacebook className="mr-2 text-xl text-gray-400" />
+            <FaLinkedin className="mr-2 text-xl text-gray-400" />
+            <FaTwitter className="mr-2 text-xl text-gray-400" />
+            <FaInstagram className="mr-2 text-xl text-gray-400" />
+            <img
+              src="/metamask.png"
+              alt="Metamask Wallet"
+              className="inline-block w-6 h-6"
+            />
+          </div>
+        </dl>
       </div>
-      <div className="space-y-2">
-        <button className="flex items-center text-blue-500">
-          <UserIcon className="w-6 h-6 mr-2" />
-          Profile
-        </button>
-        <button className="flex items-center text-blue-500">
-          <MailIcon className="w-6 h-6 mr-2" />
-          DMs
-        </button>
-        <button className="flex items-center text-blue-500">
-          <ChatAltIcon className="w-6 h-6 mr-2" />
-          Social Media
-        </button>
-      </div>
-    </aside>
+    </div>
   );
-};
-
-export default UserProfile;
+}
