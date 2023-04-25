@@ -2,7 +2,13 @@ import Avataaars from 'react-avataaars';
 import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { HiOutlineCurrencyDollar } from 'react-icons/hi';
 
-export default function UserProfile({ userProfile }) {
+export default function UserProfile({ userProfile = {} }) {
+  const {
+    firstName = 'John',
+    lastName = 'Doe',
+    experience = 200,
+  } = userProfile;
+
   return (
     <div className="flex items-center space-x-3 mt-8">
       <div className="flex-shrink-0">
@@ -28,7 +34,7 @@ export default function UserProfile({ userProfile }) {
       </div>
       <div className="min-w-0 flex-1">
         <h2 className="text-lg font-medium text-gray-900">
-          {userProfile.firstName} {userProfile.lastName}
+          {firstName} {lastName}
         </h2>
         <dl className="flex flex-col mt-1 text-sm text-gray-600">
           <div className="flex flex-col">
@@ -40,7 +46,7 @@ export default function UserProfile({ userProfile }) {
           </div>
           <div className="flex flex-col">
             <dt className="font-medium">Experience</dt>
-            <dd className="mt-1">{userProfile.experience}</dd>
+            <dd className="mt-1">{experience}</dd>
           </div>
           <div className="flex flex-row items-center mt-1">
             <FaFacebook className="mr-2 text-xl text-gray-400" />
