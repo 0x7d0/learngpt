@@ -7,11 +7,11 @@ import "react-circular-progressbar/dist/styles.css";
 
 const UserProfile = ({ user }) => {
   return (
-    <aside className="bg-white w-full lg:w-1/4 p-6 px-12 lg:p-6 lg:rounded-e-lg shadow-md lg:min-h-[calc(100vh-180px)] lg:sticky lg:top-8">
+    <aside className="bg-gray-200 w-full lg:w-1/4 p-6 px-12 lg:p-6 lg:rounded-e-lg shadow-md lg:min-h-[calc(100vh-180px)] lg:sticky lg:top-8">
       <div className="mb-6">
         <div className="flex gap-4 flex-nowrap">
           <Link
-            href="#"
+            href="/dashboard"
             className="flex overflow-hidden rounded-full border-4 border-blue-400 hover:border-blue-600"
           >
             <Image src={user.avatar} alt="Avatar" width={120} height={120} />

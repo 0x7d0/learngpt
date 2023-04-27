@@ -34,13 +34,13 @@ const ChatGPT = () => {
   };
 
   return (
-    <aside className="flex flex-col bg-white w-full lg:w-1/4 p-6 px-12 lg:p-6 lg:rounded-s-lg shadow-md lg:min-h-[calc(100vh-180px)] lg:sticky lg:top-8">
+    <aside className="flex flex-col bg-gray-200 w-full lg:w-1/4 p-6 px-12 lg:p-6 lg:rounded-s-lg shadow-md lg:min-h-[calc(100vh-180px)] lg:sticky lg:top-8">
       <div className="h-full flex flex-grow flex-col justify-stretch overflow-y-scroll mb-6">
         {messages.map((message, index) => (
           <div key={index}>
-            <div class="flex items-center mb-4">
+            <div className="flex items-center mb-4">
               <div
-                class={`flex-1 text-sm  text-gray-800 p-4 rounded-lg mb-2 ${
+                className={`flex-1 text-sm  text-gray-800 p-4 rounded-lg mb-2 ${
                   message.type === "gpt"
                     ? "bg-blue-100 rounded-ss-none"
                     : "bg-green-100 rounded-ee-none"

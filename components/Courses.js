@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import fetchCourses from "../utils/fetchCourses";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { VscDebugContinueSmall, VscLoading, VscSearch } from "react-icons/vsc";
+import {
+  VscArchive,
+  VscDebugContinueSmall,
+  VscLoading,
+  VscSearch,
+} from "react-icons/vsc";
 import Button from "./Button";
 import CourseCard from "./CourseCard";
+import jobs from "../utils/jobs";
+import JobCard from "./JobCard";
 
 const Courses = ({ user }) => {
+  const [tab, setTab] = useState("courses");
   const [courses, setCourses] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -50,7 +58,7 @@ const Courses = ({ user }) => {
 
   return (
     <main className="w-full lg:w-1/2 px-8 lg:px-0">
-      <div className="flex items-center justify-between bg-white rounded-lg overflow-hidden shadow-md mb-6 p-4">
+      <div className="flex items-center justify-between bg-gray-200 rounded-lg overflow-hidden shadow-md mb-6 p-4">
         <div className="flex gap-4">
           <div>
             <h2 className="text-xl font-bold mb-4">Your progress</h2>
@@ -58,17 +66,19 @@ const Courses = ({ user }) => {
               {user.name.split(" ")[0]}, earn more tokens by completing courses.
             </h2>
             <div className="flex gap-2">
-              <Button>
+              <Button onClick={() => setTab("courses")}>
                 <VscDebugContinueSmall /> Continue where you left off
               </Button>
-              <Button secondary>
+              <Button secondary onClick={() => setTab("courses")}>
                 <VscSearch />
                 Search for courses
               </Button>
+              <Button secondary onClick={() => setTab("jobs")}>
+                <VscArchive />
+                See job offers matching your level
+              </Button>
             </div>
           </div>
-
-          {/* button in tailwind */}
         </div>
         <div>
           <CircularProgressbar
@@ -88,20 +98,35 @@ const Courses = ({ user }) => {
           />
         </div>
       </div>
-      {courses.map((course, index) => (
-        <CourseCard
-          key={index}
-          {...course}
-          canAccess={user.level * 100 >= course.requirement}
-        />
-      ))}
-      {loading && (
-        <div className="flex items-center justify-center">
-          <VscLoading size={64} className="animate-spin" />
+
+      {tab === "courses" ? (
+        <div>
+          {courses.map((course, index) => (
+            <CourseCard
+              key={index}
+              {...course}
+              canAccess={user.level * 100 >= course.requirement}
+            />
+          ))}
+          {loading && (
+            <div className="flex items-center justify-center text-white">
+              <VscLoading size={128} className="animate-spin" />
+            </div>
+          )}
+          {!hasMore && !loading && <p>No more courses to show</p>}
+          <div ref={loader}></div>
+        </div>
+      ) : (
+        <div>
+          {jobs.map((job) => (
+            <JobCard
+              title={job[0]}
+              salary={job[1]}
+              canAccess={user.level * 100 >= job[2]}
+            />
+          ))}
         </div>
       )}
-      {!hasMore && !loading && <p>No more courses to show</p>}
-      <div ref={loader}></div>
     </main>
   );
 };

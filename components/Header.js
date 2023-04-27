@@ -5,10 +5,10 @@ import { CiCircleQuestion } from "react-icons/ci";
 
 const Header = ({ user }) => {
   return (
-    <header className="bg-white py-3 px-8 flex justify-between items-center border-b border-gray-200 gap-4">
-      <h1 className="text-gray-800 text-2xl font-bold">
+    <header className="bg-gray-900 py-6 px-8 flex justify-between items-center border-b border-gray-900 gap-4">
+      <h1 className="text-white text-2xl font-bold">
         <Link href="/">
-          <Image src="/img/logo-dark.png" alt="Logo" width={80} height={80} />
+          <Image src="/img/logo-light.png" alt="Logo" width={80} height={80} />
         </Link>
       </h1>
       <div className="flex gap-4 w-full flex-1">
@@ -29,23 +29,13 @@ const Header = ({ user }) => {
       <nav>
         <ul className="flex items-center space-x-6">
           <li>
-            <Link href="#" className="text-gray-600 hover:text-black">
-              Features
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="text-gray-600 hover:text-black">
-              Pricing
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="text-gray-600 hover:text-black">
-              About
+            <Link href="/dashboard" className="text-white hover:underline">
+              Dashboard
             </Link>
           </li>
           <li>
             <Link
-              href="#"
+              href="/"
               className="block overflow-hidden rounded-full border-4 border-blue-400 hover:border-blue-600"
             >
               <Image src={user.avatar} alt="Avatar" width={50} height={50} />

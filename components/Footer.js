@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 p-8 flex justify-between">
+    <footer className="bg-gray-900 px-8 py-24 flex justify-between">
       <div className="text-white text-sm space-y-4">
         <Link href="/">
           <Image src="/img/logo-light.png" alt="Logo" width={80} height={80} />
